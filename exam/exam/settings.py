@@ -25,7 +25,9 @@ INTERNAL_IPS = [
 # Set CoderMungan
 
 CODER_MUNGAN = [
-    {"name": "Mehmet Halil","Surname": "Mungan","GitHub":"https://github.com/CoderMungan"},
+    {"name": "Mehmet Halil",
+     "Surname": "Mungan",
+     "GitHub":"https://github.com/CoderMungan"},
     {"Bimbim":"Bombom"}
 ]
 

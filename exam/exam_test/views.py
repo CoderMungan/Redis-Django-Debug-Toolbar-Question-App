@@ -35,23 +35,28 @@ def register(request):
 
 @login_required
 def show_question(request, question_id):
-    context = {}
-    question = Question.objects.filter(pk=question_id).first()
-    context['json'] = question
+
+    question = Question.objects.get(pk=question_id)
     next_question_id = question_id + 1  # Increment the question_id
     
     cache_key = f'question_{next_question_id}'
 
-    # veriyi json atmak Mehmet Halil MUNGAN
-    serializer = QuestionsSerializers(question)
-    veriyiGor = JsonResponse(serializer.data)
-    cache.set("json",veriyiGor,300)
+    # # veriyi json atmak Mehmet Halil MUNGAN
+    # serializer = QuestionsSerializers(question)
+    # veriyiGor = JsonResponse(serializer.data)
+    # # cache.set("json",veriyiGor,300)
 
+    deneme = Question.objects.all()
+
+    for veri in deneme:
+        serializer = QuestionsSerializers(veri)
+        veriyiJson = JsonResponse(serializer.data)
+        cache.set(f'{veri.id}',veriyiJson,300)
 
     try:
         answer = Answer.objects.get(question=question, user=request.user)
         answer_text = answer.answer_text
-        cevap=cache.set(f'{cache_key}',answer_text,15)
+        # cevap=cache.set(f'{cache_key}',answer_text,15)
         # json_data == True dönüyor
         # json_data=json.dumps(cevap)
         
