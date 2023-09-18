@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}{% block page_title %}Homepage{% endblock %} 
+
+{% block content%}    
+
+ <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">UYARI</h4><hr>
+    <p>Her çeyrekte, 2 adet main course sınavı ve 2 adet yazma becerisi sınavı olarak toplamda 4 adet ara sınav vardır.</p><hr>
+    <p>Her sınavın çeyrek sonu notuna etkisi %20dir.</p><hr>
+    <p>Main course sınavları okuma, dinleme, kelime ve dil bilgisi bölümlerinden oluşmaktadır.</p><hr>
+    <p>Her sınavın süresi farklı olduğundan dönem içinde öğrenciler bilgilendirilmektedir.</p>
+  </div>
+
+<!-- Sınav başlatma düğmesi -->
+<form id="start-exam-form" method="post" action="{% url 'show_question' 1 %}">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-primary btn-lg active">Sınava Başla</button>
+</form>
+
+
+{% comment %} <script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const startExamForm = document.querySelector('#start-exam-form');
+      
+      startExamForm.addEventListener('submit', function(event) {
+          event.preventDefault(); // Formun otomatik gönderilmesini engelliyoruz
+
+          // Son kaldığı sorunun ID'sini çerezlerden al
+          const lastQuestionId = getCookie('last_question_id');
+
+          if (lastQuestionId) {
+              // Son kaldığı soru varsa, sınavı bu sorudan başlat
+              startExamForm.action = `/question/${lastQuestionId}/`; // Doğru URL'yi ayarlayın
+              startExamForm.submit(); // Formu gönderin
+              deleteCookie('last_question_id'); // Çerezi sil
+              
+          } else {
+              // Eğer son kaldığı soru yoksa, başlangıç sayfasına yönlendirin veya istediğiniz gibi işlem yapın
+              window.location.href = "{% url 'show_question' 1 %}";
+          }
+      });
+
+      // Belirli bir çerezi almak için kullanılabilecek bir işlev
+      function getCookie(name) {
+          const value = `; ${document.cookie}`;
+          const parts = value.split(`; ${name}=`);
+          if (parts.length === 2) return parts.pop().split(';').shift();
+      }
+
+      // Belirli bir çerezi silmek için kullanılabilecek bir işlev
+      function deleteCookie(name) {
+          document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+      }
+  });
+</script> {% endcomment %}
+
+ {% endblock %}
+
+ 

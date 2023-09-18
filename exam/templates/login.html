@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{%block content%}
+
+<br/><br/>
+<div class="row">
+  <div class="col-md-6 offset-md-4">
+    <form method='POST' action="">
+        
+        {% csrf_token %}
+        <p style='font-family:"Times New Roman", Times, serif;font-size:30px;color:red;font-weight:bold;'>LOGIN</p>
+        <table>
+            <tr>
+                <th style='font-family:"Times New Roman", Times, serif;font-size:25px;'>Username : </th>
+                <td>{{form.username}}</td>
+            </tr>
+            <tr>
+                <th style='font-family:"Times New Roman", Times, serif;font-size:25px;'>Password : </th>
+                <td>{{form.password}}</td>
+            </tr>
+        </table>
+        <br/>
+        <button type='submit' class='btn btn-success'>Login</button>
+      </form>
+
+  </div>
+</div>
+  <br/><br/>
+
+
+{%endblock%}

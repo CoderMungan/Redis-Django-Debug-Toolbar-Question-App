@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block page_title %}
+Answers
+{% endblock %}
+ {% block content%}    
+
+ <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Questions</th>
+        <th scope="col">Answers</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for question in questions %}
+        <tr>
+            <th scope="row">{{ question.id }}</th>
+            <td>{{ question.question_text }}</td>
+            <td>
+                {% for answer in answers %}
+                    {% if answer.question.id == question.id %}
+                        {{ answer.answer_text }}
+                    {% endif %}
+                {% endfor %}
+            </td>
+        </tr>
+    {% endfor %}
+      
+    </tbody>
+  </table>
+
+  
+
+
+ {% endblock %}
+
+ 

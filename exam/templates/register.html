@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{%block content%}
+
+<br/><br/>
+<div class="row">
+  <div class="col-md-6 offset-md-4">
+    <form method='POST' action="">
+  {% csrf_token %}
+  <p style='font-family:"Times New Roman", Times, serif;font-size:30px;color:red;font-weight:bold;'>REGISTER</p>
+  {% if messages%}
+    {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+    {%endif%}
+  <table>
+    <tr>
+        <th style='font-family:"Times New Roman", Times, serif;font-size:25px;'>Username : </th>
+        <td>{{form.username}}</td>
+    </tr>
+    <tr>
+        <th style='font-family:"Times New Roman", Times, serif;font-size:25px;'>Password : </th>
+        <td>{{form.password1}}</td>
+    </tr>
+    <tr>
+        <th style='font-family:"Times New Roman", Times, serif;font-size:25px;'>Re-Password : </th>
+        <td>{{form.password2}}</td>
+    </tr>
+  </table>
+  <br/>
+  <button type='submit' class='btn btn-secondary'>Register</button>
+</form>
+</div>
+</div>
+  <br/><br/>
+{%endblock%}    

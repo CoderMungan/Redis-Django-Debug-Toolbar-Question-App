@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block page_title %}
+Homepage
+{% endblock %}
+ {% block content%}    
+
+ <div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Well done!</h4>
+    <p>Exam is completed and answers are saved.</p>
+    <hr>
+    <p class="mb-0">You can restart the exam.</p>
+  </div>
+
+ <a href="{% url 'index' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">BACK to MAIN</a>
+
+ {% endblock %}
+
+ 

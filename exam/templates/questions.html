@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{%block content%}
+
+<br/><br/><br/>
+
+
+<div class='container', style="background-color: aliceblue;border-radius:15px;">
+    <br/>
+    
+
+    {% if messages%}
+
+    <div class="card text-white bg-success mb-4" style="max-width: 23rem;">
+        <div class="card-header">{% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </div>
+        </div>
+
+    {%endif%}
+
+
+    
+    <h1>Soru {{question.id}}</h1><hr>
+
+    <p style='font-family: "Times New Roman", Times, serif;font-size:20px;  font-weight: bold;'>{{ question.question_text }}</p>
+
+    <form method="post" action="{% url 'show_question' next_question_id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success btn-lg">Cevapla {{next_question_id}}</button>
+    </form>
+
+</br>
+</div>
+
+{%endblock%}    

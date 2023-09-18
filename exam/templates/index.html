@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block page_title %}
+Homepage
+{% endblock %}
+ {% block content%}    
+ <div class="row text-center mt-5">
+    <div class="col">
+        <h2> hoşgeldiniz  {{request.user}} </h2>
+
+
+    </div>
+    <div class="col">
+        
+     
+      <a href="{% url 'warning' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">BAŞLA</a>
+
+    </div>
+ </div>
+ <div class="row">
+    <div class="col">
+        
+    </div>
+ </div>
+ 
+
+ 
+
+
+
+
+ {% endblock %}
+
+ 
